@@ -1,18 +1,14 @@
-export const DISCOVER_MOVIES = 'DISCOVER_MOVIES';
-export const DISCOVER_MOVIES_SUCCESS = 'DISCOVER_MOVIES_SUCCESS';
+import {
+  // DISCOVER_MOVIES,
+  DISCOVER_MOVIES_SUCCESS,
+} from './actionTypes';
 
-export const discoverMovies = () => ({
-  type: DISCOVER_MOVIES,
-});
+const initialState = {
+  movies: [],
+};
 
-export const discoverMoviesSuccess = (movies) => ({
-  type: DISCOVER_MOVIES_SUCCESS,
-  movies,
-});
-
-const reducer = (state = {}, action) => {
-  const { type } = action;
-  switch (type) {
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
     case DISCOVER_MOVIES_SUCCESS:
       return {
         ...state,

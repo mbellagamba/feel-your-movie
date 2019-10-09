@@ -1,24 +1,22 @@
 import {
   put,
-  call,
-  takeEvery,
+  takeLatest,
 } from 'redux-saga/effects';
-import { DISCOVER_MOVIES, discoverMoviesSuccess } from './reducer';
-import { apiKey, language } from '../../constants';
+import { DISCOVER_MOVIES } from './actionTypes';
+import { discoverMoviesSuccess } from './actions';
+import {
+  API_URL,
+  API_KEY,
+  LANGUAGE,
+  DISCOVER_MOVIES_ROUTE,
+} from '../../api';
 
 export function* discoverMovies() {
-  const response = yield call(fetch({
-    url: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
-  }));
-  yield put(discoverMoviesSuccess(response.movies));
-  // const products = yield call(api.getProducts)
-  // yield put(actions.receiveProducts(products))
+  const response = yield fetch(`${API_URL}${DISCOVER_MOVIES_ROUTE}?api_key=${API_KEY}&language=${LANGUAGE}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
+    .then((res) => res.json());
+  yield put(discoverMoviesSuccess(response.results));
 }
 
 export function* watchDiscoverMovies() {
-  /*
-    takeEvery will fork a new `getAllProducts` task on each GET_ALL_PRODUCTS actions
-    i.e. concurrent GET_ALL_PRODUCTS actions are allowed
-  */
-  yield takeEvery(DISCOVER_MOVIES, discoverMovies);
+  yield takeLatest(DISCOVER_MOVIES, discoverMovies);
 }
