@@ -1,4 +1,5 @@
 const API_URL = 'https://api.themoviedb.org/3';
+export const IMAGES_URL = 'https://image.tmdb.org/t/p/w500';
 const API_KEY = '570e8eed172c994070c1c8b073a3d94f';
 const LANGUAGE = 'en-US';
 

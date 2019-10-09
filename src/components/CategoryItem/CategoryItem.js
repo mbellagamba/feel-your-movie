@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { stringToColor } from '../../utils';
+import { RADIUS_CARD } from '../../resources/dimensions';
 
 const Container = styled.div`
   width: 10rem;
@@ -12,7 +13,7 @@ const Container = styled.div`
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  border-radius: 0.5rem;
+  border-radius: ${RADIUS_CARD};
 `;
 
 const Text = styled.span`
