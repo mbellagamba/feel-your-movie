@@ -11,6 +11,7 @@ export default () => (
     <DrawerLayout>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/movies?genre=:genre" component={Movies} />
         <Route exact path="/movies" component={Movies} />
         <Route exact path="/movies/:id" component={Movie} />
         <Route exact path="/about" component={About} />

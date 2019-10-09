@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useQueryParams } from '../../hooks';
 import * as actions from './actions';
 
 const Movies = (props) => {
@@ -9,9 +10,12 @@ const Movies = (props) => {
     discoverMovies,
     movies,
   } = props;
+  const query = useQueryParams();
+  const genre = query.has('genre') ? query.get('genre') : undefined;
+
   useEffect(() => {
-    discoverMovies();
-  }, [discoverMovies]);
+    discoverMovies(genre);
+  }, [discoverMovies, genre]);
 
   return (
     <div>

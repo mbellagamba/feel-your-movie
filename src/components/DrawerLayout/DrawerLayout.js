@@ -32,6 +32,7 @@ const Body = styled.div`
   flex: 1 1 auto;
   position: relative;
   overflow-y: auto;
+  margin-top: ${MARGIN_MEDIUM};
 `;
 
 const Sidebar = styled.div`
@@ -39,12 +40,13 @@ const Sidebar = styled.div`
   width: ${(props) => (props.visible ? '360px' : '0')};
   font-size: 1.2rem;
   flex-direction: column;
-  margin-top: ${MARGIN_MEDIUM};
   transition: width .25s ease-in-out;
 `;
 
 const Main = styled.div`
   width: 100%;
+  margin-left: ${MARGIN_MEDIUM};
+  margin-right: ${MARGIN_MEDIUM};
 `;
 
 const Title = styled.h2`

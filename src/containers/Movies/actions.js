@@ -3,8 +3,9 @@ import {
   DISCOVER_MOVIES_SUCCESS,
 } from './actionTypes';
 
-export const discoverMovies = () => ({
+export const discoverMovies = (genre) => ({
   type: DISCOVER_MOVIES,
+  genre,
 });
 
 export const discoverMoviesSuccess = (movies) => ({
