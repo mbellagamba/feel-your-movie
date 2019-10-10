@@ -14,4 +14,6 @@ export const searchMovies = (query) => (
   `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_vide=false&${query}`
 );
 
+export const fetchMovie = (id) => `${API_URL}/movie/${id}?api_key=${API_KEY}`;
+
 export default API_URL;
