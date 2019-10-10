@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
@@ -16,8 +18,15 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: '200.html',
+      template: 'src/index.html',
+      favicon: 'images/favicon.ico',
+    }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      favicon: 'images/favicon.ico',
     }),
   ],
 };
