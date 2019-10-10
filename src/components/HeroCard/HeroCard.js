@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { RADIUS_CARD, MARGIN_SMALL } from '../../resources/dimensions';
 import { BACKGROUND, ACCENT } from '../../resources/colors';
 
@@ -26,7 +27,7 @@ const Body = styled.span`
   margin: ${MARGIN_SMALL};
 `;
 
-const Anchor = styled.a`
+const Anchor = styled(Link)`
   width: 200px;
   line-height: 2rem;
   margin: ${MARGIN_SMALL};
@@ -40,7 +41,7 @@ const HeroCard = ({
   <Card image={image}>
     <Title>{title}</Title>
     <Body>{body}</Body>
-    <Anchor href={linkPath}>{linkText}</Anchor>
+    <Anchor to={linkPath}>{linkText}</Anchor>
   </Card>
 );
 

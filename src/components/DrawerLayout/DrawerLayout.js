@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { TEXT_PRIMARY } from '../../resources/colors';
-import { MARGIN_MEDIUM, TEXT_MEDIUM } from '../../resources/dimensions';
+import { useWindowDimensions } from '../../hooks';
+import { MARGIN_MEDIUM, TEXT_MEDIUM, SCREEN_WIDTH_PHONE } from '../../resources/dimensions';
 import MenuIcon from '../../../images/menu.svg';
 
 import MenuItem from '../MenuItem';
@@ -39,6 +40,7 @@ const Sidebar = styled.div`
   display: flex;
   font-size: ${TEXT_MEDIUM};
   width: ${(props) => (props.visible ? '360px' : '0')};
+  overlow-x: hidden;
   flex-direction: column;
   transition: width .25s ease-in-out;
 `;
@@ -47,6 +49,9 @@ const Main = styled.div`
   width: 100%;
   margin-left: ${MARGIN_MEDIUM};
   margin-right: ${MARGIN_MEDIUM};
+  @media (max-width: ${SCREEN_WIDTH_PHONE}) {
+    ${(props) => (props.menuOpen ? 'display: none' : '')}
+  }
 `;
 
 const Title = styled.h2`
@@ -55,7 +60,9 @@ const Title = styled.h2`
 
 const DrawerLayout = ({ children }) => {
   const { pathname } = useLocation();
-  const [menuOpen, setMenuOpen] = useState(true);
+  const { width } = useWindowDimensions();
+  const desktop = width > parseInt(SCREEN_WIDTH_PHONE, 10);
+  const [menuOpen, setMenuOpen] = useState(desktop);
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -77,7 +84,7 @@ const DrawerLayout = ({ children }) => {
           <MenuItem title="Suggestion" path="/suggestion" currentPath={pathname} />
           <MenuItem title="About" path="/about" currentPath={pathname} />
         </Sidebar>
-        <Main>
+        <Main menuOpen={menuOpen}>
           {children}
         </Main>
       </Body>

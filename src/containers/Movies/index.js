@@ -6,10 +6,15 @@ import { Link } from 'react-router-dom';
 import { useQueryParams } from '../../hooks';
 import * as actions from './actions';
 import MovieCard from '../../components/MovieCard';
+import { SCREEN_WIDTH_PHONE } from '../../resources/dimensions';
 
 const Grid = styled.div`
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
+  @media (max-width: ${SCREEN_WIDTH_PHONE}) {
+    flex-direction: column;
+  }
   justify-content: center;
 `;
 

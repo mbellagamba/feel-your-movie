@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { RADIUS_CARD, MARGIN_SMALL, TEXT_EXTRA_SMALL } from '../../resources/dimensions';
+import {
+  RADIUS_CARD,
+  MARGIN_SMALL,
+  TEXT_EXTRA_SMALL,
+  SCREEN_WIDTH_PHONE,
+} from '../../resources/dimensions';
 import { IMAGES_URL } from '../../api';
 import { BACKGROUND, ACCENT } from '../../resources/colors';
 
@@ -10,13 +15,17 @@ const Card = styled.div`
   flex-direction: column;
   border-radius: ${RADIUS_CARD};
   border: 1px solid white;
-  height: 225px
-  width: 362.5px;
+  height: 180px;
+  width: 260px;
   overflow: hidden;
   margin: ${MARGIN_SMALL};
   &:hover{
     transform: scale(1.02);
     transition: all 0.4s;
+  }
+  @media only screen (min-width: ${SCREEN_WIDTH_PHONE}) {
+    height: 225px
+    width: 362.5px;
   }
 `;
 
