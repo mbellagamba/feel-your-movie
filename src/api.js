@@ -10,4 +10,8 @@ export const discoverMovies = (genre, page) => {
 
 export const fetchGenres = () => `${API_URL}/genre/movie/list?api_key=${API_KEY}&language=${LANGUAGE}`;
 
+export const searchMovies = (query) => (
+  `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_vide=false&${query}`
+);
+
 export default API_URL;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import feelings from '../../resources/feelings';
 import * as actions from './actions';
 
 const Form = styled.form`
@@ -34,8 +35,14 @@ const Suggestion = ({ setSuggestionParams }) => {
   return (
     <Form onSubmit={handleSubmit} target="/movies">
       <label htmlFor="word">
-        <div>Name</div>
-        <input name="word" type="text" value={word} onChange={(e) => setWord(e.target.value)} />
+        <div>What are you thinking?</div>
+        <input
+          name="word"
+          type="text"
+          value={word}
+          placeholder="Write a word or two..."
+          onChange={(e) => setWord(e.target.value)}
+        />
       </label>
       <label htmlFor="feeling">
         <div>How do you feel?</div>
@@ -45,14 +52,9 @@ const Suggestion = ({ setSuggestionParams }) => {
           onChange={(e) => setFeeling(e.target.value)}
         >
           <option value="">Select a feeling</option>
-          <option value="inspired">Inspired</option>
-          <option value="engaged">Engaged</option>
-          <option value="serene">Serene</option>
-          <option value="hopeful">Hopeful</option>
-          <option value="disengaged">Disengaged</option>
-          <option value="upset">Upset</option>
-          <option value="angry">Angry</option>
-          <option value="worried">Worried</option>
+          {Object.keys(feelings).map((key) => (
+            <option key={key} value={key}>{feelings[key]}</option>
+          ))}
         </select>
       </label>
       <label htmlFor="nostalgic">

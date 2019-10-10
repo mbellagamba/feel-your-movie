@@ -22,11 +22,13 @@ const Link = styled(RouterLink)`
   padding-left: 1rem;
 `;
 
-const MenuItem = ({ title, path, currentPath }) => (
+const MenuItem = ({
+  title, path, currentPath, onClick,
+}) => (
   <Wrapper
     active={path === '/' ? currentPath === path : currentPath.startsWith(path)}
   >
-    <Link to={path}>{title}</Link>
+    <Link to={path} onClick={onClick}>{title}</Link>
   </Wrapper>
 );
 
@@ -34,10 +36,12 @@ MenuItem.propTypes = {
   title: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   currentPath: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 MenuItem.defaultProps = {
   currentPath: '',
+  onClick: undefined,
 };
 
 export default MenuItem;

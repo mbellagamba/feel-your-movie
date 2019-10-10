@@ -6,6 +6,7 @@ import Home from './containers/Home';
 import Movies from './containers/Movies';
 import Movie from './containers/Movie';
 import Suggestion from './containers/Suggestion';
+import SuggestResult from './containers/SuggestResult';
 
 export default () => (
   <Router>
@@ -16,6 +17,7 @@ export default () => (
         <Route exact path="/movies" component={Movies} />
         <Route exact path="/movies/:id" component={Movie} />
         <Route exact path="/suggestion" component={Suggestion} />
+        <Route exact path="/suggestion/result" component={SuggestResult} />
         <Route exact path="/about" component={About} />
       </Switch>
     </DrawerLayout>

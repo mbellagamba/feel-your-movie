@@ -69,6 +69,12 @@ const DrawerLayout = ({ children }) => {
     setMenuOpen(!menuOpen);
   };
 
+  const onMenuItemClick = () => {
+    if (!desktop) {
+      setMenuOpen(false);
+    }
+  };
+
   return (
     <Container>
       <Toolbar>
@@ -79,10 +85,10 @@ const DrawerLayout = ({ children }) => {
       </Toolbar>
       <Body>
         <Sidebar visible={menuOpen}>
-          <MenuItem title="Home" path="/" currentPath={pathname} />
-          <MenuItem title="Movies" path="/movies" currentPath={pathname} />
-          <MenuItem title="Suggestion" path="/suggestion" currentPath={pathname} />
-          <MenuItem title="About" path="/about" currentPath={pathname} />
+          <MenuItem title="Home" path="/" currentPath={pathname} onClick={onMenuItemClick} />
+          <MenuItem title="Movies" path="/movies" currentPath={pathname} onClick={onMenuItemClick} />
+          <MenuItem title="Suggestion" path="/suggestion" currentPath={pathname} onClick={onMenuItemClick} />
+          <MenuItem title="About" path="/about" currentPath={pathname} onClick={onMenuItemClick} />
         </Sidebar>
         <Main menuOpen={menuOpen}>
           {children}

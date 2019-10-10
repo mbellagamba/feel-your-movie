@@ -1,5 +1,5 @@
 import {
-  // DISCOVER_MOVIES,
+  DISCOVER_MOVIES,
   DISCOVER_MOVIES_SUCCESS,
 } from './actionTypes';
 
@@ -9,6 +9,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case DISCOVER_MOVIES:
+      return {
+        ...state,
+        movies: [],
+      };
     case DISCOVER_MOVIES_SUCCESS:
       return {
         ...state,
