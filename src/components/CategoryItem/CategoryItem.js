@@ -14,9 +14,13 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   border-radius: ${RADIUS_CARD};
+  &:hover{
+    transform: scale(1.01);
+    transition: all 0.4s;
+  }
 `;
 
-const Text = styled.span`
+const Text = styled.h4`
   font-weight: 500;
 `;
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { TEXT_PRIMARY } from '../../resources/colors';
-import { MARGIN_MEDIUM } from '../../resources/dimensions';
+import { MARGIN_MEDIUM, TEXT_MEDIUM } from '../../resources/dimensions';
 import MenuIcon from '../../../images/menu.svg';
 
 import MenuItem from '../MenuItem';
@@ -37,8 +37,8 @@ const Body = styled.div`
 
 const Sidebar = styled.div`
   display: flex;
+  font-size: ${TEXT_MEDIUM};
   width: ${(props) => (props.visible ? '360px' : '0')};
-  font-size: 1.2rem;
   flex-direction: column;
   transition: width .25s ease-in-out;
 `;
@@ -51,7 +51,6 @@ const Main = styled.div`
 
 const Title = styled.h2`
   margin: 0px ${MARGIN_MEDIUM};
-  font-size: 2.1rem;
 `;
 
 const DrawerLayout = ({ children }) => {
@@ -75,6 +74,7 @@ const DrawerLayout = ({ children }) => {
         <Sidebar visible={menuOpen}>
           <MenuItem title="Home" path="/" currentPath={pathname} />
           <MenuItem title="Movies" path="/movies" currentPath={pathname} />
+          <MenuItem title="Suggestion" path="/suggestion" currentPath={pathname} />
           <MenuItem title="About" path="/about" currentPath={pathname} />
         </Sidebar>
         <Main>

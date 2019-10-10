@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { RADIUS_CARD, MARGIN_SMALL } from '../../resources/dimensions';
+import { RADIUS_CARD, MARGIN_SMALL, TEXT_EXTRA_SMALL } from '../../resources/dimensions';
 import { IMAGES_URL } from '../../api';
 import { BACKGROUND, ACCENT } from '../../resources/colors';
 
@@ -31,8 +31,8 @@ const CardBody = styled.div`
   padding-right: ${MARGIN_SMALL};
 `;
 
-const Title = styled.div`
-  font-size: 1.2rem;
+const Title = styled.h3`
+  margin: 0;
   font-weight: 500;
   overflow: hidden;
   white-space: nowrap;
@@ -48,14 +48,14 @@ const VoteContainer = styled.div`
 const Date = styled.span`
   color: grey;
   margin: 0px 4px;
-  font-size: 12px;
+  font-size: ${TEXT_EXTRA_SMALL};
 `;
 
 const VoteAverage = styled.span`
   border: 1px solid ${ACCENT};
   border-radius: 2px;
   font-weight: 500;
-  font-size: 12px;
+  font-size: ${TEXT_EXTRA_SMALL};
   text-align: center;
   min-width: 20px;
   padding: 2px 0px;
@@ -64,7 +64,7 @@ const VoteAverage = styled.span`
 const VoteCount = styled.span`
   color: grey;
   margin: 0px 4px;
-  font-size: 12px;
+  font-size: ${TEXT_EXTRA_SMALL};
 `;
 
 const MovieCard = ({
