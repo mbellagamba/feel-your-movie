@@ -4,6 +4,7 @@ import {
 } from './actionTypes';
 
 const initialState = {
+  loading: false,
   movies: [],
 };
 
@@ -12,12 +13,17 @@ const reducer = (state = initialState, action) => {
     case DISCOVER_MOVIES:
       return {
         ...state,
-        movies: [],
+        loading: true,
+        movies: action.page > 1 ? state.movies : [],
       };
     case DISCOVER_MOVIES_SUCCESS:
       return {
         ...state,
-        movies: action.movies,
+        loading: false,
+        movies: [
+          ...state.movies,
+          ...action.movies,
+        ],
       };
     default:
       return state;
