@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ACCENT } from '../../resources/colors';
+import { MARGIN_MEDIUM } from '../../resources/dimensions';
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  line-height: 3rem;
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   overflow: hidden;
@@ -16,24 +17,24 @@ const Wrapper = styled.div`
     : ':hover { background-color: #ffffff22; }')}
 `;
 
-const Link = styled(RouterLink)`
-  text-decoration: none;
-  line-height: 3rem;
-  padding-left: 1rem;
+const Icon = styled.img`
+  margin: 0 ${MARGIN_MEDIUM};
 `;
 
 const MenuItem = ({
-  title, path, currentPath, onClick,
+  title, icon, path, currentPath, onClick,
 }) => (
   <Wrapper
     active={path === '/' ? currentPath === path : currentPath.startsWith(path)}
   >
-    <Link to={path} onClick={onClick}>{title}</Link>
+    {icon && <Icon src={icon} alt={title} />}
+    <Link style={{ flex: 1 }} to={path} onClick={onClick}>{title}</Link>
   </Wrapper>
 );
 
 MenuItem.propTypes = {
   title: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   path: PropTypes.string.isRequired,
   currentPath: PropTypes.string,
   onClick: PropTypes.func,
@@ -41,6 +42,7 @@ MenuItem.propTypes = {
 
 MenuItem.defaultProps = {
   currentPath: '',
+  icon: undefined,
   onClick: undefined,
 };
 

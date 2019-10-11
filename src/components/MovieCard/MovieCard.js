@@ -5,7 +5,6 @@ import {
   RADIUS_CARD,
   MARGIN_SMALL,
   TEXT_EXTRA_SMALL,
-  SCREEN_WIDTH_PHONE,
 } from '../../resources/dimensions';
 import { IMAGES_URL } from '../../api';
 import { BACKGROUND, ACCENT } from '../../resources/colors';
@@ -17,16 +16,11 @@ const Card = styled.div`
   border-radius: ${RADIUS_CARD};
   border: 1px solid white;
   height: 180px;
-  width: 260px;
   overflow: hidden;
   margin: ${MARGIN_SMALL};
   &:hover{
     transform: scale(1.02);
     transition: all 0.4s;
-  }
-  @media only screen (min-width: ${SCREEN_WIDTH_PHONE}) {
-    height: 225px
-    width: 362.5px;
   }
 `;
 
@@ -44,8 +38,6 @@ const CardBody = styled.div`
 const Title = styled.h3`
   margin: 0;
   font-weight: 500;
-  overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
 `;
 

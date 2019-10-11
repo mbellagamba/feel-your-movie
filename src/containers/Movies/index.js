@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { useQueryParams } from '../../hooks';
 import * as actions from './actions';
 import MovieCard from '../../components/MovieCard';
@@ -18,7 +18,7 @@ const Container = styled.div`
 const Grid = styled.div`
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
+  align-items: stretch;
   @media (max-width: ${SCREEN_WIDTH_PHONE}) {
     flex-direction: column;
   }
@@ -32,6 +32,12 @@ const LoadMore = styled.button`
   border: 1px solid ${ACCENT};
   margin: ${MARGIN_MEDIUM} 0;
   padding: 0 ${MARGIN_MEDIUM};
+`;
+
+const Link = styled(RouterLink)`
+  overflow: hidden;
+  min-width: 250px;
+  flex: 0 0 20%;
 `;
 
 const Movies = (props) => {

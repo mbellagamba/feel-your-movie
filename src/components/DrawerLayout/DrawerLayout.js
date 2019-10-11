@@ -5,9 +5,37 @@ import { useLocation } from 'react-router-dom';
 import { TEXT_PRIMARY } from '../../resources/colors';
 import { useWindowDimensions } from '../../hooks';
 import { MARGIN_MEDIUM, TEXT_MEDIUM, SCREEN_WIDTH_PHONE } from '../../resources/dimensions';
-import MenuIcon from '../../../images/menu.svg';
+import menu from '../../../images/menu.svg';
+import home from '../../../images/home.svg';
+import movie from '../../../images/movie.svg';
+import lightbulb from '../../../images/lightbulb.svg';
+import info from '../../../images/info.svg';
 
 import MenuItem from '../MenuItem';
+
+
+const menuItems = [
+  {
+    title: 'Home',
+    path: '/',
+    icon: home,
+  },
+  {
+    title: 'Movies',
+    path: '/movies',
+    icon: movie,
+  },
+  {
+    title: 'Suggestion',
+    path: '/suggestion',
+    icon: lightbulb,
+  },
+  {
+    title: 'About',
+    path: '/about',
+    icon: info,
+  },
+];
 
 const Container = styled.div`
   display: flex;
@@ -58,6 +86,10 @@ const Title = styled.h2`
   margin: 0px ${MARGIN_MEDIUM};
 `;
 
+const MenuButton = styled.button`
+  padding: 0;
+`;
+
 const DrawerLayout = ({ children }) => {
   const { pathname } = useLocation();
   const { width } = useWindowDimensions();
@@ -78,17 +110,23 @@ const DrawerLayout = ({ children }) => {
   return (
     <Container>
       <Toolbar>
-        <button type="button" onClick={handleClick}>
-          <img src={MenuIcon} alt="Menu" />
-        </button>
+        <MenuButton type="button" onClick={handleClick}>
+          <img src={menu} alt="Menu" />
+        </MenuButton>
         <Title>Feel your movie</Title>
       </Toolbar>
       <Body>
         <Sidebar visible={menuOpen}>
-          <MenuItem title="Home" path="/" currentPath={pathname} onClick={onMenuItemClick} />
-          <MenuItem title="Movies" path="/movies" currentPath={pathname} onClick={onMenuItemClick} />
-          <MenuItem title="Suggestion" path="/suggestion" currentPath={pathname} onClick={onMenuItemClick} />
-          <MenuItem title="About" path="/about" currentPath={pathname} onClick={onMenuItemClick} />
+          {menuItems.map((item) => (
+            <MenuItem
+              key={item.title}
+              title={item.title}
+              icon={item.icon}
+              path={item.path}
+              currentPath={pathname}
+              onClick={onMenuItemClick}
+            />
+          ))}
         </Sidebar>
         <Main menuOpen={menuOpen}>
           {children}

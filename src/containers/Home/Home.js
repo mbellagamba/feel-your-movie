@@ -7,7 +7,7 @@ import camera from '../../../images/camera.jpg';
 import CategoryItem from '../../components/CategoryItem';
 import HeroCard from '../../components/HeroCard';
 import * as actions from './actions';
-import { MARGIN_SMALL } from '../../resources/dimensions';
+import { MARGIN_SMALL, MARGIN_LARGE } from '../../resources/dimensions';
 
 const Main = styled.div`
   display: flex;
@@ -19,13 +19,18 @@ const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex: 1;
+  margin-bottom: ${MARGIN_LARGE};
 `;
 
 const SectionTitle = styled.h3`
   margin-left: ${MARGIN_SMALL};
   margin-right: ${MARGIN_SMALL};
-
 `;
+
+const CategoryLink = styled(Link)`
+  flex: 1;
+`;
+
 const Home = ({ genres, fetchGenres }) => {
   useEffect(() => {
     fetchGenres();
@@ -41,10 +46,10 @@ const Home = ({ genres, fetchGenres }) => {
       />
       <SectionTitle>Categories</SectionTitle>
       <Grid>
-        {genres && genres.map((g) => (
-          <Link key={g.id} to={`/movies?genre=${g.id}`}>
-            <CategoryItem name={g.name} />
-          </Link>
+        {genres && genres.map((g, index) => (
+          <CategoryLink key={g.id} to={`/movies?genre=${g.id}`}>
+            <CategoryItem index={index} name={g.name} />
+          </CategoryLink>
         ))}
       </Grid>
     </Main>
