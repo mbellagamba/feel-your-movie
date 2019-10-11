@@ -11,13 +11,22 @@ const Form = styled.form`
   flex-direction: column;
 `;
 
+const InputError = styled.div`
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 500;
+`;
+
 const Suggestion = ({ setSuggestionParams }) => {
   const [word, setWord] = useState('');
   const [feeling, setFeeling] = useState('');
   const [nostalgic, setNostalgic] = useState(false);
   const [toResult, setToResult] = useState(false);
+
+  const invalidWord = word.length > 50;
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (invalidWord) return;
     setSuggestionParams({
       word,
       feeling,
@@ -42,7 +51,9 @@ const Suggestion = ({ setSuggestionParams }) => {
           value={word}
           placeholder="Write a word or two..."
           onChange={(e) => setWord(e.target.value)}
+          required
         />
+        {invalidWord && <InputError>The word is too long</InputError>}
       </label>
       <label htmlFor="feeling">
         <div>How do you feel?</div>
@@ -50,6 +61,7 @@ const Suggestion = ({ setSuggestionParams }) => {
           name="feeling"
           value={feeling}
           onChange={(e) => setFeeling(e.target.value)}
+          required
         >
           <option value="">Select a feeling</option>
           {Object.keys(feelings).map((key) => (
