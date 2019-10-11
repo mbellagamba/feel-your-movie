@@ -9,6 +9,7 @@ import {
 } from '../../resources/dimensions';
 import { IMAGES_URL } from '../../api';
 import { BACKGROUND, ACCENT } from '../../resources/colors';
+import camera from '../../../images/camera.jpg';
 
 const Card = styled.div`
   display: flex;
@@ -79,8 +80,8 @@ const VoteCount = styled.span`
 const MovieCard = ({
   title, cover, releaseDate, voteAverage, voteCount,
 }) => (
-  <Card cover={`${IMAGES_URL}${cover}`}>
-    <CoverImage cover={`${IMAGES_URL}${cover}`} />
+  <Card>
+    <CoverImage cover={cover ? `${IMAGES_URL}${cover}` : camera} />
     <CardBody>
       <Title>{title}</Title>
       <Date>{releaseDate.split('-')[0]}</Date>
@@ -94,10 +95,14 @@ const MovieCard = ({
 
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired,
+  cover: PropTypes.string,
   releaseDate: PropTypes.string.isRequired,
   voteAverage: PropTypes.number.isRequired,
   voteCount: PropTypes.number.isRequired,
+};
+
+MovieCard.defaultProps = {
+  cover: null,
 };
 
 export default MovieCard;
