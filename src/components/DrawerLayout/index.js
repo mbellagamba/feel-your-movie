@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
-import { TEXT_PRIMARY } from '../../resources/colors';
+import { useLocation, Link } from 'react-router-dom';
+import { TEXT_PRIMARY, ACCENT } from '../../resources/colors';
 import { useWindowDimensions } from '../../hooks';
 import { MARGIN_MEDIUM, TEXT_MEDIUM, SCREEN_WIDTH_PHONE } from '../../resources/dimensions';
 import menu from '../../../images/menu.svg';
@@ -10,9 +10,6 @@ import home from '../../../images/home.svg';
 import movie from '../../../images/movie.svg';
 import lightbulb from '../../../images/lightbulb.svg';
 import info from '../../../images/info.svg';
-
-import MenuItem from '../MenuItem';
-
 
 const menuItems = [
   {
@@ -90,6 +87,22 @@ const MenuButton = styled.button`
   padding: 0;
 `;
 
+const MenuItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  line-height: 3rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  overflow: hidden;
+  ${(props) => (props.active
+    ? `background-color: ${ACCENT}40;`
+    : ':hover { background-color: #ffffff22; }')}
+`;
+
+const Icon = styled.img`
+  margin: 0 ${MARGIN_MEDIUM};
+`;
+
 const DrawerLayout = ({ children }) => {
   const { pathname } = useLocation();
   const { width } = useWindowDimensions();
@@ -117,15 +130,15 @@ const DrawerLayout = ({ children }) => {
       </Toolbar>
       <Body>
         <Sidebar visible={menuOpen}>
-          {menuItems.map((item) => (
-            <MenuItem
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-              path={item.path}
-              currentPath={pathname}
-              onClick={onMenuItemClick}
-            />
+          {menuItems.map(({ title, path, icon }) => (
+            <Link key={title} to={path} onClick={onMenuItemClick}>
+              <MenuItem
+                active={pathname === path || (path !== '/' && pathname.startsWith(path))}
+              >
+                <Icon src={icon} alt={title} />
+                {title}
+              </MenuItem>
+            </Link>
           ))}
         </Sidebar>
         <Main menuOpen={menuOpen}>
