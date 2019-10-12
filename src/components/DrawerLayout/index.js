@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useLocation, Link } from 'react-router-dom';
-import { TEXT_PRIMARY, ACCENT } from '../../resources/colors';
 import { useWindowDimensions } from '../../hooks';
-import { MARGIN_MEDIUM, TEXT_MEDIUM, SCREEN_WIDTH_PHONE } from '../../resources/dimensions';
+import {
+  TEXT_PRIMARY,
+  ACCENT,
+  BACKGROUND,
+} from '../../resources/colors';
+import {
+  MARGIN_MEDIUM,
+  TEXT_MEDIUM,
+  TOOLBAR_HEIGHT,
+  SCREEN_WIDTH_PHONE,
+  TEXT_SMALL,
+} from '../../resources/dimensions';
 import menu from '../../../images/menu.svg';
 import home from '../../../images/home.svg';
 import movie from '../../../images/movie.svg';
@@ -35,19 +45,21 @@ const menuItems = [
 ];
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
   color: ${TEXT_PRIMARY};
 `;
 
 const Toolbar = styled.header`
-  height: 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: ${TOOLBAR_HEIGHT};
   border-bottom: 1px solid white;
   display: flex;
-  flex: 0 0 auto;
   flex-flow: row nowrap;
   align-items: center;
+  background-color: ${BACKGROUND};
   padding-left: ${MARGIN_MEDIUM};
   padding-right: ${MARGIN_MEDIUM};
 `;
@@ -58,24 +70,28 @@ const Body = styled.div`
   flex: 1 1 auto;
   position: relative;
   overflow-y: auto;
-  margin-top: ${MARGIN_MEDIUM};
+  margin-top: ${TOOLBAR_HEIGHT};
 `;
 
 const Sidebar = styled.div`
   display: flex;
   font-size: ${TEXT_MEDIUM};
-  width: ${(props) => (props.visible ? '360px' : '0')};
+  margin-top: ${MARGIN_MEDIUM};
+  width: ${(props) => (props.visible ? '260px' : '0')};
   overlow-x: hidden;
   flex-direction: column;
-  transition: width .25s ease-in-out;
+  transition: width .25s ease-out;
+  @media (max-width: ${SCREEN_WIDTH_PHONE}) {
+    width: ${(props) => (props.visible ? '80%' : '0')}
+  }
 `;
 
 const Main = styled.div`
-  width: 100%;
+  flex: 1;
   margin-left: ${MARGIN_MEDIUM};
   margin-right: ${MARGIN_MEDIUM};
   @media (max-width: ${SCREEN_WIDTH_PHONE}) {
-    ${(props) => (props.menuOpen ? 'display: none' : '')}
+    display: ${(props) => (props.menuOpen ? 'none' : 'block')}
   }
 `;
 
@@ -91,6 +107,7 @@ const MenuItem = styled.div`
   display: flex;
   flex-direction: row;
   line-height: 3rem;
+  font-size: ${TEXT_SMALL}
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   overflow: hidden;

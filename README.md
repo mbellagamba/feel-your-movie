@@ -18,3 +18,5 @@ Available scripts:
 * `start`: run the dev server
 * `test`: run tests
 * `build`: bundle build files
+* `lint`: lint projects files
+* `surge`: publish the project on _surge.sh_ (require login)

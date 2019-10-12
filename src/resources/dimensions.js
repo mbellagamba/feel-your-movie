@@ -6,4 +6,5 @@ export const TEXT_EXTRA_SMALL = '0.8rem';
 export const TEXT_SMALL = '1rem';
 export const TEXT_MEDIUM = '1.2rem';
 export const TEXT_LARGE = '1.4rem';
-export const SCREEN_WIDTH_PHONE = '400px';
+export const TOOLBAR_HEIGHT = '4rem';
+export const SCREEN_WIDTH_PHONE = '425px';

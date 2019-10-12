@@ -12,7 +12,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "publish": "webpack --config webpack.prod.js; npx surge ./dist feel-your-movie.sh",
+    "surge": "webpack --config webpack.prod.js; npx surge ./dist feel-your-movie.sh",
     "lint": "eslint *.js",
     "test": "jest --watch"
   },
