@@ -8,3 +8,4 @@ export const TEXT_MEDIUM = '1.2rem';
 export const TEXT_LARGE = '1.4rem';
 export const TOOLBAR_HEIGHT = '4rem';
 export const SCREEN_WIDTH_PHONE = '425px';
+export const SCREEN_WIDTH_TABLET = '650px';

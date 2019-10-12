@@ -87,11 +87,13 @@ const Sidebar = styled.div`
 `;
 
 const Main = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   margin-left: ${MARGIN_MEDIUM};
   margin-right: ${MARGIN_MEDIUM};
   @media (max-width: ${SCREEN_WIDTH_PHONE}) {
-    display: ${(props) => (props.menuOpen ? 'none' : 'block')}
+    display: ${(props) => (props.menuOpen ? 'none' : 'flex')}
   }
 `;
 
