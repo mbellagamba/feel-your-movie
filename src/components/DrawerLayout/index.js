@@ -120,6 +120,11 @@ const DrawerLayout = ({ children }) => {
     }
   };
 
+  const isActive = (path, current) => {
+    if (!current) return false;
+    return pathname === path || (path !== '/' && pathname.startsWith(path));
+  };
+
   return (
     <Container>
       <Toolbar>
@@ -129,12 +134,10 @@ const DrawerLayout = ({ children }) => {
         <Title>Feel your movie</Title>
       </Toolbar>
       <Body>
-        <Sidebar visible={menuOpen}>
+        <Sidebar data-testid="sidebar" visible={menuOpen}>
           {menuItems.map(({ title, path, icon }) => (
             <Link key={title} to={path} onClick={onMenuItemClick}>
-              <MenuItem
-                active={pathname === path || (path !== '/' && pathname.startsWith(path))}
-              >
+              <MenuItem active={isActive(path, pathname)}>
                 <Icon src={icon} alt={title} />
                 {title}
               </MenuItem>

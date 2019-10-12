@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  min-width: 12rem;
+  height: 3rem;
+  background-image: linear-gradient( to right, #1abc9c 0%, #15987e 51%, #107461 100% );
+  margin: 0.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.c0:hover {
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.c1 {
+  font-weight: 500;
+}
+
+<div
+    class="c0"
+    color="#1abc9c"
+  >
+    <h4
+      class="c1"
+    >
+      test
+    </h4>
+  </div>
+</DocumentFragment>
+`;

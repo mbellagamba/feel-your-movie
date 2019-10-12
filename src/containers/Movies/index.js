@@ -56,8 +56,9 @@ const Movies = (props) => {
 
   return (
     <Container>
-      <Grid>
-        {movies && movies.map((movie) => (
+      <Grid data-testid="movies-grid">
+        {movies.length === 0 && <span>No movie found</span>}
+        {movies.map((movie) => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
             <MovieCard
               title={movie.title}

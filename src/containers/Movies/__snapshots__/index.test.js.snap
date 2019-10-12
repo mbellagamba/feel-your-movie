@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  color: white;
+  line-height: 1.8rem;
+  border-radius: 0.9rem;
+  border: 1px solid #3dda84;
+  margin: 16px 0;
+  padding: 0 16px;
+}
+
+@media (max-width:400px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="c1"
+      data-testid="movies-grid"
+    >
+      <div />
+      <div />
+      <div />
+    </div>
+    <button
+      class="c2"
+      type="button"
+    >
+      Load more
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot without movies 1`] = `
+<DocumentFragment>
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  color: white;
+  line-height: 1.8rem;
+  border-radius: 0.9rem;
+  border: 1px solid #3dda84;
+  margin: 16px 0;
+  padding: 0 16px;
+}
+
+@media (max-width:400px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="c1"
+      data-testid="movies-grid"
+    >
+      <span>
+        No movie found
+      </span>
+    </div>
+    <button
+      class="c2"
+      type="button"
+    >
+      Load more
+    </button>
+  </div>
+</DocumentFragment>
+`;

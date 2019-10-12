@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  color: #fff;
+}
+
+.c1 {
+  height: 4rem;
+  border-bottom: 1px solid white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: auto;
+  margin-top: 16px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.2rem;
+  width: 360px;
+  overlow-x: hidden;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-transition: width .25s ease-in-out;
+  transition: width .25s ease-in-out;
+}
+
+.c6 {
+  width: 100%;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.c3 {
+  margin: 0px 16px;
+}
+
+.c2 {
+  padding: 0;
+}
+
+@media (max-width:400px) {
+  .c6 {
+    display: none;
+  }
+}
+
+<div
+    class="c0"
+  >
+    <header
+      class="c1"
+    >
+      <button
+        class="c2"
+        type="button"
+      >
+        <img
+          alt="Menu"
+          src="test-file-stub"
+        />
+      </button>
+      <h2
+        class="c3"
+      >
+        Feel your movie
+      </h2>
+    </header>
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+        data-testid="sidebar"
+      >
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+      <div
+        class="c6"
+      >
+        <div />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
