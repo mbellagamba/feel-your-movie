@@ -34,11 +34,8 @@ const Anchor = styled(Link)`
   line-height: 2.4rem;
   margin: ${MARGIN_SMALL};
   text-align: center;
-  border-radius: 1.2em;
+  border-radius: 1.2rem;
   background-image: linear-gradient(to right, ${ACCENT} 0%, ${ACCENT_DARK} 51%, ${PRIMARY} 100%);
-  &:hover {
-    background-position: right center;
-  }
 `;
 
 const Column = styled.div`

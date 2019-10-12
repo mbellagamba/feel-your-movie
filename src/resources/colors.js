@@ -4,6 +4,7 @@ export const TEXT_PRIMARY = '#fff';
 export const TEXT_SECONDARY = '#aaa';
 export const ACCENT = '#3dda84';
 export const ACCENT_DARK = '#2a9a66';
+export const ERROR = '#f44336';
 export const VIBRANT_COLORS = [
   '#1abc9c', // turquoise
   '#2ecc71', // emerald
