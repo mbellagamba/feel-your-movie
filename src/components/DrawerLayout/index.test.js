@@ -13,7 +13,7 @@ jest.mock('../../hooks', () => ({
 
 test('should close the sidebar on menu icon click', () => {
   const { getByTestId, getByAltText } = render(<DrawerLayout><div /></DrawerLayout>);
-  expect(getByTestId('sidebar')).toHaveStyle('width: 360px');
+  expect(getByTestId('sidebar')).toHaveStyle('width: 260px');
   fireEvent.click(getByAltText('Menu').parentNode);
   expect(getByTestId('sidebar')).toHaveStyle('width: 0');
 });

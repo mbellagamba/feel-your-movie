@@ -43,7 +43,7 @@ exports[`should match snapshot 1`] = `
   padding: 0 16px;
 }
 
-@media (max-width:400px) {
+@media (max-width:425px) {
   .c1 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
@@ -115,7 +115,7 @@ exports[`should match snapshot without movies 1`] = `
   padding: 0 16px;
 }
 
-@media (max-width:400px) {
+@media (max-width:425px) {
   .c1 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
