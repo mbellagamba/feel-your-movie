@@ -129,11 +129,10 @@ exports[`should match snapshot without movies 1`] = `
     <div
       class="c1"
       data-testid="movies-grid"
-    >
-      <span>
-        No movie found
-      </span>
-    </div>
+    />
+    <span>
+      No movie found
+    </span>
     <button
       class="c2"
       type="button"

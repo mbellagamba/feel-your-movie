@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import camera from '../../../images/camera.jpg';
+import cover from '../../../images/cover.jpg';
 import CategoryItem from '../../components/CategoryItem';
 import HeroCard from '../../components/HeroCard';
 import * as actions from './actions';
@@ -40,7 +40,7 @@ const Home = ({ genres, fetchGenres }) => {
       <HeroCard
         title="Suggest me a movie"
         body="Tell me how you feel and I'll tell you the right movie for you!"
-        image={camera}
+        image={cover}
         linkText="Start"
         linkPath="/suggestion"
       />
