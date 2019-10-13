@@ -1,103 +1,132 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import {
   RADIUS_CARD,
   MARGIN_SMALL,
   TEXT_EXTRA_SMALL,
+  TEXT_MEDIUM,
+  SCREEN_WIDTH_PHONE,
+  TEXT_SMALL,
 } from '../../resources/dimensions';
-import { BACKGROUND, ACCENT } from '../../resources/colors';
-import { movieImage } from '../../utils';
+import { CARD_BACKGROUND } from '../../resources/colors';
+import { useWindowDimensions } from '../../hooks';
+import { movieImage, truncate } from '../../utils';
+import { MovieProp } from '../../utils/propTypes';
 
 const Card = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border-radius: ${RADIUS_CARD};
-  border: 1px solid white;
-  height: 180px;
   overflow: hidden;
   margin: ${MARGIN_SMALL};
+  background-color: ${CARD_BACKGROUND};
+  @media (min-width: ${SCREEN_WIDTH_PHONE}) {
+    height: 280px;
+  }
   &:hover{
     transform: scale(1.02);
     transition: all 0.4s;
   }
 `;
 
+const Column = styled.div`
+  flex: 0.5;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding-top: ${(props) => props.padding || 0}
+  padding-bottom: ${(props) => props.padding || 0}
+  padding-left: ${(props) => props.padding || 0}
+`;
+
 const CoverImage = styled.div`
-  height: 60%;
-  background-image: linear-gradient(#ffffff22, ${BACKGROUND}), url(${(props) => props.cover}) ;
+  height: 100%;
+  background-position: center;
   background-size: cover;
+  background-image: linear-gradient(
+    to left,
+    #ffffff22, 
+    ${CARD_BACKGROUND}),
+    url(${(props) => props.cover});
 `;
 
-const CardBody = styled.div`
-  padding-left: ${MARGIN_SMALL};
-  padding-right: ${MARGIN_SMALL};
-`;
-
-const Title = styled.h3`
-  margin: 0;
+const Title = styled.span`
   font-weight: 500;
+  font-size: ${TEXT_MEDIUM};
   text-overflow: ellipsis;
+  overflow: hidden;
+  flex-shrink: 0;
+  @media (min-width: 750px) {
+    white-space: nowrap;
+  }
+`;
+
+const Year = styled.span`
+  color: grey;
+  margin-bottom: ${MARGIN_SMALL};
+  font-weight: 300;
+  font-size: ${TEXT_EXTRA_SMALL};
 `;
 
 const VoteContainer = styled.div`
+  flex-grow: 1;
   display: flex;
-  align-items: center;
-  margin-top: ${MARGIN_SMALL};
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
-const Date = styled.span`
-  color: grey;
-  margin: 0px 4px;
-  font-size: ${TEXT_EXTRA_SMALL};
-`;
-
+// If the vote is over 5 emphasize color differences
+// votes under 5 are all red.
 const VoteAverage = styled.span`
-  border: 1px solid ${ACCENT};
-  border-radius: 2px;
+  border: 1px solid ${(props) => (props.vote > 5
+    ? `hsla(${(props.vote / 1.5) * 10 * 1.45}, 68%, 55%, 1)`
+    : 'hsla(0, 68%, 55%, 1)'
+  )};
+  line-height: 40px;
+  width: 40px;
+  border-radius: 20px;
   font-weight: 500;
-  font-size: ${TEXT_EXTRA_SMALL};
+  margin-top: ${MARGIN_SMALL};
+  font-size: ${TEXT_SMALL};
   text-align: center;
-  min-width: 20px;
-  padding: 2px 0px;
 `;
 
-const VoteCount = styled.span`
-  color: grey;
-  margin: 0px 4px;
+const Overview = styled.span`
   font-size: ${TEXT_EXTRA_SMALL};
+  font-weight: 300;
 `;
 
 const MovieCard = ({
   movie: {
     title,
+    overview,
     backdrop_path: cover,
     release_date: releaseDate,
     vote_average: voteAverage,
-    vote_count: voteCount,
   },
-}) => (
-  <Card>
-    <CoverImage cover={movieImage(cover)} />
-    <CardBody>
-      <Title>{title}</Title>
-      <Date>{releaseDate.split('-')[0]}</Date>
-      <VoteContainer>
-        <VoteAverage>{voteAverage}</VoteAverage>
-        <VoteCount>{`(${voteCount})`}</VoteCount>
-      </VoteContainer>
-    </CardBody>
-  </Card>
-);
-
+}) => {
+  const { width } = useWindowDimensions();
+  const description = width > parseInt(SCREEN_WIDTH_PHONE, 10)
+    ? truncate(overview, width / 9)
+    : truncate(overview, 250);
+  return (
+    <Card>
+      <Column padding={MARGIN_SMALL}>
+        <Title>{title}</Title>
+        <Year>{releaseDate.split('-')[0]}</Year>
+        <Overview>{description}</Overview>
+        <VoteContainer>
+          <VoteAverage vote={voteAverage}>{voteAverage}</VoteAverage>
+        </VoteContainer>
+      </Column>
+      <Column>
+        <CoverImage cover={movieImage(cover)} />
+      </Column>
+    </Card>
+  );
+};
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
-    vote_average: PropTypes.number.isRequired,
-    vote_count: PropTypes.number.isRequired,
-    backdrop_path: PropTypes.string,
-  }).isRequired,
+  movie: MovieProp.isRequired,
 };
 
 export default MovieCard;
