@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {
   RADIUS_CARD,
   MARGIN_SMALL,
@@ -104,11 +105,17 @@ const MovieCard = ({
     release_date: releaseDate,
     vote_average: voteAverage,
   },
+  truncateDescription,
 }) => {
   const { width } = useWindowDimensions();
-  const description = width > parseInt(SCREEN_WIDTH_PHONE, 10)
-    ? truncate(overview, width / 9)
-    : truncate(overview, 250);
+  let description;
+  if (truncateDescription) {
+    description = width > parseInt(SCREEN_WIDTH_PHONE, 10)
+      ? truncate(overview, width / 9)
+      : truncate(overview, 250);
+  } else {
+    description = overview;
+  }
   return (
     <Card>
       <Column padding={MARGIN_SMALL}>
@@ -127,6 +134,11 @@ const MovieCard = ({
 };
 MovieCard.propTypes = {
   movie: MovieProp.isRequired,
+  truncateDescription: PropTypes.bool,
+};
+
+MovieCard.defaultProps = {
+  truncateDescription: false,
 };
 
 export default MovieCard;

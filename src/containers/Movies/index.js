@@ -60,7 +60,7 @@ const Movies = (props) => {
       <Grid data-testid="movies-grid">
         {movies.map((movie) => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
-            <MovieCard movie={movie} />
+            <MovieCard movie={movie} truncateDescription />
           </Link>
         ))}
       </Grid>
