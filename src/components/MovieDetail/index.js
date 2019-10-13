@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import tinyColor from 'tinycolor2';
 import Rating from '../Rating';
-import { BACKGROUND, TEXT_SECONDARY, ACCENT } from '../../resources/colors';
+import { CARD_BACKGROUND, TEXT_SECONDARY, ACCENT } from '../../resources/colors';
 import { movieImage } from '../../utils';
 import { MovieProp } from '../../utils/propTypes';
 import {
@@ -18,7 +17,7 @@ const Card = styled.div`
   flex-direction: row;
   border-radius: 0.2rem;
   overflow: hidden;
-  background-color: ${tinyColor(BACKGROUND).lighten(10).toHexString()};
+  background-color: ${CARD_BACKGROUND};
   margin: ${MARGIN_MEDIUM} 0;
   @media (max-width: ${SCREEN_WIDTH_TABLET}) {
     flex-direction: column;

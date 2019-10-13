@@ -9,6 +9,7 @@ import * as actions from './actions';
 import {
   ACCENT,
   BACKGROUND,
+  CARD_BACKGROUND,
   ERROR,
   TEXT_PRIMARY,
 } from '../../resources/colors';
@@ -25,7 +26,7 @@ const Container = styled.div`
   display: flex;
   border-radius: 0.2rem;
   overflow: hidden;
-  background-color: ${tinyColor(BACKGROUND).lighten(10).toHexString()};
+  background-color: ${CARD_BACKGROUND};
   margin: ${MARGIN_MEDIUM} 0;
   padding: 0;
   @media (max-width: ${SCREEN_WIDTH_TABLET}) {

@@ -13,3 +13,10 @@ export function hashCode(str) {
 export function movieImage(path) {
   return path ? `${IMAGES_URL}${path}` : defaultImage;
 }
+
+export function truncate(text, length) {
+  if (!text) return '';
+  return text.length <= length
+    ? text
+    : text.slice(0, length).concat('…');
+}
