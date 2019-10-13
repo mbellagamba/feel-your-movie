@@ -8,6 +8,7 @@ import * as actions from './actions';
 import MovieCard from '../../components/MovieCard';
 import { SCREEN_WIDTH_PHONE, MARGIN_MEDIUM } from '../../resources/dimensions';
 import { ACCENT } from '../../resources/colors';
+import { MovieProp } from '../../utils/propTypes';
 
 const Container = styled.div`
   display: flex;
@@ -57,19 +58,13 @@ const Movies = (props) => {
   return (
     <Container>
       <Grid data-testid="movies-grid">
-        {movies.length === 0 && <span>No movie found</span>}
         {movies.map((movie) => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
-            <MovieCard
-              title={movie.title}
-              cover={movie.backdrop_path}
-              releaseDate={movie.release_date}
-              voteAverage={movie.vote_average}
-              voteCount={movie.vote_count}
-            />
+            <MovieCard movie={movie} />
           </Link>
         ))}
       </Grid>
+      {!loading && movies.length === 0 && <span>No movie found</span>}
       {loading
         ? <span>Loading...</span>
         : <LoadMore type="button" onClick={() => setPage(page + 1)}>Load more</LoadMore>}
@@ -80,7 +75,7 @@ const Movies = (props) => {
 Movies.propTypes = {
   discoverMovies: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  movies: PropTypes.arrayOf(Object).isRequired,
+  movies: PropTypes.arrayOf(MovieProp).isRequired,
 };
 
 const mapStateToProps = (state) => ({

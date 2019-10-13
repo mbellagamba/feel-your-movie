@@ -132,7 +132,7 @@ const Suggestion = ({ setSuggestionParams }) => {
   return (
     <Container>
       <Image src={formImage} alt="cinema" />
-      <Form onSubmit={handleSubmit} target="/movies">
+      <Form onSubmit={handleSubmit} target="/movies" autoComplete="off">
         <label htmlFor="word">
           <Question>What are you thinking?</Question>
           <TextInput

@@ -69,7 +69,13 @@ const VoteCount = styled.span`
 `;
 
 const MovieCard = ({
-  title, cover, releaseDate, voteAverage, voteCount,
+  movie: {
+    title,
+    backdrop_path: cover,
+    release_date: releaseDate,
+    vote_average: voteAverage,
+    vote_count: voteCount,
+  },
 }) => (
   <Card>
     <CoverImage cover={movieImage(cover)} />
@@ -85,15 +91,13 @@ const MovieCard = ({
 );
 
 MovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  cover: PropTypes.string,
-  releaseDate: PropTypes.string.isRequired,
-  voteAverage: PropTypes.number.isRequired,
-  voteCount: PropTypes.number.isRequired,
-};
-
-MovieCard.defaultProps = {
-  cover: null,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    vote_count: PropTypes.number.isRequired,
+    backdrop_path: PropTypes.string,
+  }).isRequired,
 };
 
 export default MovieCard;
