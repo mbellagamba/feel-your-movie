@@ -1,36 +1,20 @@
 import { hashCode } from '../utils';
 
+const genres = {
+  inspired: '28,9648', // action, mistery
+  serene: '35,14', // comedy fantasy
+  hopeful: '18,878', // sci-fi drama
+  engaged: '18,80', // drama crime
+  angry: '10752,12', // war adventure
+  disengaged: '27,53', // horror thriller
+  worried: '37,10751', // western family
+  upset: '35,14,16', // comedy fantasy animation
+};
+
 export function mapSuggestionToQuery({ feeling, word, nostalgic }) {
-  let withGenres; let releaseDate; let year;
-  switch (feeling) {
-    case 'inspired':
-      withGenres = '28,9648'; // action, mistery
-      break;
-    case 'serene':
-      withGenres = '35,14'; // comedy fantasy
-      break;
-    case 'hopeful':
-      withGenres = '18,878'; // sci-fi drama
-      break;
-    case 'engaged':
-      withGenres = '18,80'; // drama crime
-      break;
-    case 'angry':
-      withGenres = '10752,12'; // war adventure
-      break;
-    case 'disengaged':
-      withGenres = '27,53'; // horror thriller
-      break;
-    case 'worried':
-      withGenres = '37,10751'; // western family
-      break;
-    case 'upset':
-      withGenres = '35,14,16'; // comedy fantasy animation
-      break;
-    default:
-      withGenres = null;
-      break;
-  }
+  const withGenres = genres[feeling];
+  let releaseDate;
+  let year;
   if (nostalgic) {
     releaseDate = 'release_date.lte=2000-01-01';
     // year between 1970 and 1999
