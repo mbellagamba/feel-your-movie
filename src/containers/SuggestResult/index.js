@@ -7,6 +7,7 @@ import * as actions from './actions';
 import { fetchMovie as fetchDetail } from '../Movie/actions';
 import MovieCard from '../../components/MovieCard';
 import MovieDetail from '../../components/MovieDetail';
+import LoadingDots from '../../components/LoadingDots';
 import { TEXT_MEDIUM } from '../../resources/dimensions';
 import { MovieProp } from '../../utils/propTypes';
 
@@ -42,7 +43,7 @@ const SuggestResult = ({
   }
 
   if (!hasMovies || !movie) {
-    return <span>Loading...</span>;
+    return <LoadingDots />;
   }
 
   return (

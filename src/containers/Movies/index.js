@@ -6,6 +6,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useQueryParams } from '../../hooks';
 import * as actions from './actions';
 import MovieCard from '../../components/MovieCard';
+import LoadingDots from '../../components/LoadingDots';
 import { SCREEN_WIDTH_PHONE, MARGIN_MEDIUM } from '../../resources/dimensions';
 import { ACCENT } from '../../resources/colors';
 import { MovieProp } from '../../utils/propTypes';
@@ -55,6 +56,13 @@ const Movies = (props) => {
     discoverMovies(genre, page);
   }, [discoverMovies, genre, page]);
 
+  const renderFooter = () => {
+    if (loading) return <LoadingDots />;
+    return movies.length === 0
+      ? <span>No movie found</span>
+      : <LoadMore type="button" onClick={() => setPage(page + 1)}>Load more</LoadMore>;
+  };
+
   return (
     <Container>
       <Grid data-testid="movies-grid">
@@ -64,10 +72,7 @@ const Movies = (props) => {
           </Link>
         ))}
       </Grid>
-      {!loading && movies.length === 0 && <span>No movie found</span>}
-      {loading
-        ? <span>Loading...</span>
-        : <LoadMore type="button" onClick={() => setPage(page + 1)}>Load more</LoadMore>}
+      {renderFooter()}
     </Container>
   );
 };

@@ -117,5 +117,5 @@ test('should show load component if it is loading', () => {
       <Movies />
     </Provider>
   ));
-  expect(getByText('Loading...')).toBeInTheDocument();
+  expect(getByText('Loading')).toBeInTheDocument();
 });

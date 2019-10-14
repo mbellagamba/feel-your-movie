@@ -106,15 +106,6 @@ exports[`should match snapshot without movies 1`] = `
   justify-content: center;
 }
 
-.c2 {
-  color: white;
-  line-height: 1.8rem;
-  border-radius: 0.9rem;
-  border: 1px solid #3dda84;
-  margin: 16px 0;
-  padding: 0 16px;
-}
-
 @media (max-width:425px) {
   .c1 {
     -webkit-flex-direction: column;
@@ -133,12 +124,6 @@ exports[`should match snapshot without movies 1`] = `
     <span>
       No movie found
     </span>
-    <button
-      class="c2"
-      type="button"
-    >
-      Load more
-    </button>
   </div>
 </DocumentFragment>
 `;
