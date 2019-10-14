@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import {
   RADIUS_CARD,
   MARGIN_SMALL,
@@ -10,8 +9,7 @@ import {
   TEXT_SMALL,
 } from '../../resources/dimensions';
 import { CARD_BACKGROUND } from '../../resources/colors';
-import { useWindowDimensions } from '../../hooks';
-import { movieImage, truncate } from '../../utils';
+import { movieImage } from '../../utils';
 import { MovieProp } from '../../utils/propTypes';
 
 const Card = styled.div`
@@ -95,6 +93,10 @@ const VoteAverage = styled.span`
 const Overview = styled.span`
   font-size: ${TEXT_EXTRA_SMALL};
   font-weight: 300;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 `;
 
 const MovieCard = ({
@@ -105,40 +107,24 @@ const MovieCard = ({
     release_date: releaseDate,
     vote_average: voteAverage,
   },
-  truncateDescription,
-}) => {
-  const { width } = useWindowDimensions();
-  let description;
-  if (truncateDescription) {
-    description = width > parseInt(SCREEN_WIDTH_PHONE, 10)
-      ? truncate(overview, width / 9)
-      : truncate(overview, 250);
-  } else {
-    description = overview;
-  }
-  return (
-    <Card>
-      <Column padding={MARGIN_SMALL}>
-        <Title>{title}</Title>
-        <Year>{releaseDate.split('-')[0]}</Year>
-        <Overview>{description}</Overview>
-        <VoteContainer>
-          <VoteAverage vote={voteAverage}>{voteAverage}</VoteAverage>
-        </VoteContainer>
-      </Column>
-      <Column>
-        <CoverImage cover={movieImage(cover)} />
-      </Column>
-    </Card>
-  );
-};
+}) => (
+  <Card>
+    <Column padding={MARGIN_SMALL}>
+      <Title>{title}</Title>
+      <Year>{releaseDate.split('-')[0]}</Year>
+      <Overview>{overview}</Overview>
+      <VoteContainer>
+        <VoteAverage vote={voteAverage}>{voteAverage}</VoteAverage>
+      </VoteContainer>
+    </Column>
+    <Column>
+      <CoverImage cover={movieImage(cover)} />
+    </Column>
+  </Card>
+);
+
 MovieCard.propTypes = {
   movie: MovieProp.isRequired,
-  truncateDescription: PropTypes.bool,
-};
-
-MovieCard.defaultProps = {
-  truncateDescription: false,
 };
 
 export default MovieCard;
