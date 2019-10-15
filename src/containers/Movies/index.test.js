@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import Movies from './index';
 import { DISCOVER_MOVIES } from './actionTypes';
@@ -118,4 +118,25 @@ test('should show load component if it is loading', () => {
     </Provider>
   ));
   expect(getByText('Loading')).toBeInTheDocument();
+});
+
+test('should load more items on button click', () => {
+  const mockStore = configureStore();
+  const store = mockStore({
+    movies: {
+      movies: [createMovie(2)],
+      loading: false,
+    },
+  });
+  const { getByText } = render((
+    <Provider store={store}>
+      <Movies />
+    </Provider>
+  ));
+  fireEvent.click(getByText('Load more'));
+  // The action DISCOVER_MOVIES should be dispatched 2 times
+  // On mount and on load more click
+  const actions = store.getActions()
+    .filter((a) => a.type === DISCOVER_MOVIES);
+  expect(actions).toHaveLength(2);
 });
