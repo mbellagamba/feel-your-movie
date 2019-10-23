@@ -12,10 +12,11 @@ jest.mock('../../hooks', () => ({
 }));
 
 test('should close the sidebar on menu icon click', () => {
-  const { getByTestId, getByAltText } = render(<DrawerLayout><div /></DrawerLayout>);
-  expect(getByTestId('sidebar')).toHaveStyle('width: 260px');
-  fireEvent.click(getByAltText('Menu').parentNode);
-  expect(getByTestId('sidebar')).toHaveStyle('width: 0');
+  const { getByTestId } = render(<DrawerLayout><div /></DrawerLayout>);
+  const sidebar = getByTestId('sidebar');
+  expect(sidebar).toHaveStyle('width: 260px');
+  fireEvent.click(getByTestId('menu-button'));
+  expect(sidebar).toHaveStyle('width: 0');
 });
 
 test('should match snapshot', () => {

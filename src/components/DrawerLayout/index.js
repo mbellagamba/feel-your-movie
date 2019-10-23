@@ -147,7 +147,7 @@ const DrawerLayout = ({ children }) => {
   return (
     <Container>
       <Toolbar>
-        <MenuButton type="button" onClick={handleClick}>
+        <MenuButton data-testid="menu-button" type="button" onClick={handleClick}>
           <img src={menu} alt="Menu" />
         </MenuButton>
         <Title>Feel your movie</Title>

@@ -105,6 +105,7 @@ exports[`should match snapshot 1`] = `
     >
       <button
         class="c2"
+        data-testid="menu-button"
         type="button"
       >
         <img
