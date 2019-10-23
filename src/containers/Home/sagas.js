@@ -7,7 +7,7 @@ import { fetchGenresSuccess } from './actions';
 import * as api from '../../api';
 
 export function* fetchGenres() {
-  const response = yield fetch(api.fetchGenres(1))
+  const response = yield fetch(api.fetchGenres())
     .then((res) => res.json());
   yield put(fetchGenresSuccess(response.genres));
 }
