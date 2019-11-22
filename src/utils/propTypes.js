@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export const MovieProp = PropTypes.shape({
   title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
   poster_path: PropTypes.string,
   vote_average: PropTypes.number,
   vote_count: PropTypes.number,

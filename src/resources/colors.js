@@ -3,6 +3,7 @@ export const CARD_BACKGROUND = '#3b3b3b';
 export const PRIMARY = '#073042';
 export const TEXT_PRIMARY = '#fff';
 export const TEXT_SECONDARY = '#aaa';
+export const TEXT_ACCENT = '#232323';
 export const ACCENT = '#3dda84';
 export const ACCENT_DARK = '#2a9a66';
 export const ERROR = '#f44336';

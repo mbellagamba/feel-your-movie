@@ -20,6 +20,15 @@ const Heading = styled.h2`
   font-size: ${TEXT_MEDIUM};
 `;
 
+const Grid = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`;
+
+const Item = styled.div`
+  flex: 0 0 25%;
+`;
+
 const SuggestResult = ({
   searchMovies, params, suggestedMovies, error, fetchMovie, movie,
 }) => {
@@ -50,9 +59,13 @@ const SuggestResult = ({
     <Container>
       <MovieDetail movie={movie} />
       <Heading>Other suggested movies</Heading>
-      {suggestedMovies.slice(1).map((m) => (
-        <MovieCard key={m.id} movie={m} />
-      ))}
+      <Grid>
+        {suggestedMovies.slice(1).map((m) => (
+          <Item key={m.id} >
+            <MovieCard movie={m} />
+          </Item>
+        ))}
+      </Grid>
     </Container>
   );
 };

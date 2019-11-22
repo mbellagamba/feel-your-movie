@@ -5,123 +5,94 @@ import {
   MARGIN_SMALL,
   TEXT_EXTRA_SMALL,
   TEXT_MEDIUM,
-  SCREEN_WIDTH_PHONE,
-  TEXT_SMALL,
 } from '../../resources/dimensions';
-import { CARD_BACKGROUND } from '../../resources/colors';
 import { movieImage } from '../../utils';
 import { MovieProp } from '../../utils/propTypes';
 
 const Card = styled.div`
   display: flex;
-  flex-direction: row;
-  border-radius: ${RADIUS_CARD};
-  overflow: hidden;
-  margin: ${MARGIN_SMALL};
-  background-color: ${CARD_BACKGROUND};
-  @media (min-width: ${SCREEN_WIDTH_PHONE}) {
-    height: 280px;
-  }
-  &:hover{
-    transform: scale(1.02);
-    transition: all 0.4s;
-  }
-`;
-
-const Column = styled.div`
-  flex: 0.5;
-  display: flex;
-  min-width: 0;
   flex-direction: column;
-  padding-top: ${(props) => props.padding || 0}
-  padding-bottom: ${(props) => props.padding || 0}
-  padding-left: ${(props) => props.padding || 0}
+  border-radius: ${RADIUS_CARD};
+  padding: ${MARGIN_SMALL};
+  position: relative;
 `;
 
-const CoverImage = styled.div`
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  background-image: linear-gradient(
-    to left,
-    #ffffff22, 
-    ${CARD_BACKGROUND}),
-    url(${(props) => props.cover});
+const Poster = styled.img`
+  border-radius: ${RADIUS_CARD};
+  background-image: url('${(props) => props.src}');
+  object-fit: cover;
+  height: 300px;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0006;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: ${MARGIN_SMALL};
+  background-color: #0009;
+  opacity: 0
+  transition: .5s;
+  &:hover {
+    opacity: 1
+  }
 `;
 
 const Title = styled.span`
   font-weight: 500;
   font-size: ${TEXT_MEDIUM};
-  text-overflow: ellipsis;
-  overflow: hidden;
-  flex-shrink: 0;
-  @media (min-width: 750px) {
-    white-space: nowrap;
-  }
+  margin: ${MARGIN_SMALL};
+  text-align: center;
 `;
 
-const Year = styled.span`
-  color: grey;
-  margin-bottom: ${MARGIN_SMALL};
-  font-weight: 300;
+const SubTitle = styled.span`
   font-size: ${TEXT_EXTRA_SMALL};
-`;
-
-const VoteContainer = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  text-align: center;
 `;
 
 // If the vote is over 5 emphasize color differences
 // votes under 5 are all red.
-const VoteAverage = styled.span`
-  border: 1px solid ${(props) => (props.vote > 5
-    ? `hsla(${(props.vote / 1.5) * 10 * 1.45}, 68%, 55%, 1)`
+const Vote = styled.span`
+  background-color: ${(props) => (props.vote > 5
+    ? `hsla(${(props.vote / 1.5) * 10 * 1.45}, 68%, 40%, 1)`
     : 'hsla(0, 68%, 55%, 1)'
   )};
-  line-height: 40px;
+  line-height: 20px;
   width: 40px;
-  border-radius: 20px;
-  font-weight: 500;
-  margin-top: ${MARGIN_SMALL};
-  font-size: ${TEXT_SMALL};
-  text-align: center;
-`;
-
-const Overview = styled.span`
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
   font-size: ${TEXT_EXTRA_SMALL};
-  font-weight: 300;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  margin: ${MARGIN_SMALL};
+  text-align: center;
+  position: absolute;
+  right: 0;
+  bottom: ${MARGIN_SMALL};
+  color: white;
 `;
 
 const MovieCard = ({
   movie: {
     title,
-    overview,
-    backdrop_path: cover,
+    poster_path: cover,
     release_date: releaseDate,
     vote_average: voteAverage,
   },
 }) => (
-  <Card>
-    <Column padding={MARGIN_SMALL}>
-      <Title>{title}</Title>
-      <Year>{releaseDate.split('-')[0]}</Year>
-      <Overview>{overview}</Overview>
-      <VoteContainer>
-        <VoteAverage vote={voteAverage}>{voteAverage}</VoteAverage>
-      </VoteContainer>
-    </Column>
-    <Column>
-      <CoverImage cover={movieImage(cover)} />
-    </Column>
-  </Card>
-);
+    <Card>
+      <Poster src={movieImage(cover)} />
+      <Vote vote={voteAverage}>{voteAverage}</Vote>
+      <Overlay>
+        <Title>{title}</Title>
+        {releaseDate && <SubTitle>{releaseDate.split('-')[0]}</SubTitle>}
+      </Overlay>
+    </Card>
+  );
 
 MovieCard.propTypes = {
   movie: MovieProp.isRequired,
