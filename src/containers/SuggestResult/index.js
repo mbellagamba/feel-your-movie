@@ -61,7 +61,7 @@ const SuggestResult = ({
       <Heading>Other suggested movies</Heading>
       <Grid>
         {suggestedMovies.slice(1).map((m) => (
-          <Item key={m.id} >
+          <Item key={m.id}>
             <MovieCard movie={m} />
           </Item>
         ))}

@@ -78,7 +78,7 @@ const Sidebar = styled.div`
   font-size: ${TEXT_MEDIUM};
   margin-top: ${MARGIN_MEDIUM};
   width: ${(props) => (props.visible ? '260px' : '0')};
-  overlow-x: hidden;
+  overflow-x: hidden;
   flex-direction: column;
   transition: width .25s ease-out;
   @media (max-width: ${SCREEN_WIDTH_PHONE}) {
@@ -109,7 +109,7 @@ const MenuItem = styled.div`
   display: flex;
   flex-direction: row;
   line-height: 3rem;
-  font-size: ${TEXT_SMALL}
+  font-size: ${TEXT_SMALL};
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   overflow: hidden;

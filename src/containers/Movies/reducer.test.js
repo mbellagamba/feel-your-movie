@@ -10,7 +10,6 @@ const prevMovies = [...Array(3).keys()]
 const nextMovies = [...Array(3).keys()]
   .map((id) => ({ id: id + 3, title: `movie ${id + 3}` }));
 
-
 test('should return initial state', () => {
   const { movies, loading } = reducer(undefined, {});
   expect(movies).toEqual([]);

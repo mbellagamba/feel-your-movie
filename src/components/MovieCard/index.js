@@ -37,7 +37,7 @@ const Overlay = styled.div`
   align-items: center;
   margin: ${MARGIN_SMALL};
   background-color: #0009;
-  opacity: 0
+  opacity: 0;
   transition: .5s;
   &:hover {
     opacity: 1
@@ -84,15 +84,15 @@ const MovieCard = ({
     vote_average: voteAverage,
   },
 }) => (
-    <Card>
-      <Poster src={movieImage(cover)} />
-      <Vote vote={voteAverage}>{voteAverage}</Vote>
-      <Overlay>
-        <Title>{title}</Title>
-        {releaseDate && <SubTitle>{releaseDate.split('-')[0]}</SubTitle>}
-      </Overlay>
-    </Card>
-  );
+  <Card>
+    <Poster src={movieImage(cover)} />
+    <Vote vote={voteAverage}>{voteAverage}</Vote>
+    <Overlay>
+      <Title>{title}</Title>
+      {releaseDate && <SubTitle>{releaseDate.split('-')[0]}</SubTitle>}
+    </Overlay>
+  </Card>
+);
 
 MovieCard.propTypes = {
   movie: MovieProp.isRequired,

@@ -54,7 +54,7 @@ exports[`should match snapshot 1`] = `
   font-size: 1.2rem;
   margin-top: 16px;
   width: 260px;
-  overlow-x: hidden;
+  overflow-x: hidden;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
